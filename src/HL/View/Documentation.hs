@@ -139,3 +139,11 @@ links items =
   ul_ (forM_ items
              (\(title,url) ->
                 li_ (a_ [href_ url] (toHtml title))))
+
+annotatedLinks :: [(Text,Text,Text)] -> Html ()
+annotatedLinks items =
+  ul_ (forM_ items
+            (\(title,url,annotation) ->
+                li_ (p_ (do (a_ [href_ url] (toHtml title))
+                            ": "
+                            (toHtml annotation)))))
